@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package bookservice;
+
+option go_package = "gen/v1";
+
+service BookService {
+    rpc Add(BookInfo) returns (State);
+    rpc Get(ID) returns (BookInfo);
+    rpc ListBook(Empty) returns (BookInfoList);
+}
+
+message BookInfo{
+    string title = 1;
+    string author = 2;
+    int32 year= 3;
+}
+
+message State{
+    string status = 1;
+}
+
+message ID {
+    int32 id = 1;
+}
+
+message BookInfoList {
+   repeated BookInfo books = 1;
+}
+
+message Empty {
+
+}
+
+
+
