@@ -1,31 +1,10 @@
 package repository
 
-import (
-	"book_service/internal/domain"
-	"database/sql"
-)
+import "database/sql"
 
-type PostgresRepository struct {
-	db *sql.DB
-}
-
-func NewPostgresRepository(db *sql.DB) *PostgresRepository {
-	return &PostgresRepository{
-		db: db,
+func Ping(db *sql.DB) error {
+	if err := db.Ping(); err != nil {
+		panic("cannot read config: " + err.Error())
 	}
-}
-
-func (r *PostgresRepository) Add(book *domain.Book) string {
-	// Логика добавления книги в базу данных
-	return ""
-}
-
-func (r *PostgresRepository) Get(id int) *domain.Book {
-	// Логика добавления книги в базу данных
-	return &domain.Book{}
-}
-
-func (r *PostgresRepository) ListBook() []domain.Book {
-	// Логика добавления книги в базу данных
-	return []domain.Book{}
+	return nil
 }
