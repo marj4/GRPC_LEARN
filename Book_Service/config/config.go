@@ -8,9 +8,10 @@ type Config struct {
 	Type     string `env:"DB_TYPE"`
 	Host     string `env:"DB_HOST"`
 	Port     string `env:"DB_PORT"`
-	User    string `env:"DB_USER"`
+	User     string `env:"DB_USER"`
 	Name     string `env:"DB_NAME"`
 	Password string `env:"DB_PASSWORD"`
+	SslMode  string `env:"DB_SSL"`
 }
 
 func LoadConfig() (*Config, error) {
@@ -23,6 +24,6 @@ func LoadConfig() (*Config, error) {
 		panic("cannot read config: " + err.Error())
 	}
 
-	return &cfg,nil
+	return &cfg, nil
 
 }
